@@ -1,9 +1,8 @@
 document.getElementById("getWeatherBtn").addEventListener("click", () => {
-  const apiKey = "743222f8e823d16cf419a6290847ebb8";
-  const city = "London";
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  const apiKey = "e467712b257e418838be97cc881a71de"; // Must match what Cypress intercepts
+  const url = `https://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=${apiKey}`;
 
-  fetch(url)
+  fetch(url, { cache: "no-store" }) // prevents caching issues
     .then((response) => {
       if (!response.ok) {
         throw new Error("Failed to fetch weather data");
